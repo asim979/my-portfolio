@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My Profile </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(to bottom, #0a192f, #020c1b);
+            color: #e6f1ff;
+        }
+        
+        .rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            background: rgba(100, 149, 237, 0.5);
+            border-radius: 0 0 5px 5px;
+            animation: rain linear infinite;
+        }
+        
+        @keyframes rain {
+            0% {
+                transform: translateY(-100px) rotate(15deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(15deg);
+                opacity: 0;
+            }
+        }
+        
+        .card {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 149, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 149, 237, 0.2);
+            border-color: rgba(100, 149, 237, 0.5);
+        }
+        
+        .link-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 149, 237, 0.3);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #64ffda;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-title:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Rain Background -->
+    <div class="rain-container" id="rain"></div>
+    
+ <!-- Main Content -->
+<div class="container mx-auto px-4 py-12 max-w-5xl">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row items-center justify-between mb-16"> 
+        <div class="flex items-center mb-6 md:mb-0">
+            <div class="w-20 h-20 rounded-full overflow-hidden mr-4 border-2 border-indigo-400">
+                <img src="https://media.istockphoto.com/id/1396319474/vector/hacker-cyber-criminal-with-laptop-stealing-user-personal-data-hacker-attack-and-web-security.jpg?s=612x612&w=0&k=20&c=pJj4BIJnbtKPLLa_uG_yyWZ6XRCAIUbgur3KHRBwBkE=" alt="Asim Al-aqeel" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-white">Asim Al-aqeel</h1>
+                <p class="text-indigo-300">junior Web devoloper</p>
+            </div>
+        </div>
+        <div class="flex space-x-4">
+            <a href="https://www.linkedin.com/in/asim-al-aqeel-8b765035b/" class="link-btn bg-indigo-800 hover:bg-indigo-700 text-white px-6 py-2 rounded-full flex items-center">
+                <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+            </a>
+            <a href="assets/docs/CV_Asim_EN.pdf" 
+               class="link-btn bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-full flex items-center"
+               download="CV_Asim_EN.pdf">
+                <i class="fas fa-file-pdf mr-2"></i> Download CV
+            </a>
+        </div>
+    </header>
+        
+        <!-- About Section -->
+        <section class="mb-16">
+            <h2 class="section-title text-2xl font-bold mb-6 inline-block">About Me</h2>
+            <div class="card p-6 rounded-lg">
+                <p class="mb-4">I am a passionate tech enthusiast with a strong interest in web development, cybersecurity, and data analysis.</p>
+                <p>I enjoy exploring the latest technologies, building secure and efficient web applications, and extracting valuable insights from data to drive decision-making. My curiosity drives me to continuously learn and improve my skills in coding, network security, and data analytics.</p>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section class="mb-16">
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="mb-16">
+            <h2 class="section-title text-2xl font-bold mb-6 inline-block">Skills</h2>
+            <div class="card p-6 rounded-lg">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>JavaScript/TypeScript</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>React.js</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>Python</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>Reverse Engineer</span>
+                    </div>
+                  
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>Rust</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>C / C++</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-indigo-400 mr-2"></div>
+                        <span>Cybersecurity</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section>
+            <h2 class="section-title text-2xl font-bold mb-6 inline-block">Get in touch for collaborations and inquiries</h2>
+            <div class="card p-6 rounded-lg">
+                <div class="flex flex-col md:flex-row justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-lg font-semibold mb-2">Contact Information</h3>
+                        <p class="text-indigo-300"><i class="fas fa-envelope mr-2"></i> assimaqeel91@gmail.com</p>
+                        <p class="text-indigo-300"><i class="fas fa-phone mr-2"></i>+966 563531316</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/asim-al-aqeel-8b765035b/" class="w-10 h-10 rounded-full bg-indigo-800 flex items-center justify-center hover:bg-indigo-700">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/asim979" class="w-10 h-10 rounded-full bg-indigo-800 flex items-center justify-center hover:bg-indigo-700">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com/i_ahql" class="w-10 h-10 rounded-full bg-indigo-800 flex items-center justify-center hover:bg-indigo-700">
+                            <i class="fab fa-x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="mt-16 text-center text-indigo-300 text-sm">
+            <p>© 2025 Asim AL-aqeel. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create rain effect
+        function createRain() {
+            const rainContainer = document.getElementById('rain');
+            const dropsCount = 100;
+            
+            for (let i = 0; i < dropsCount; i++) {
+                const drop = document.createElement('div');
+                drop.classList.add('raindrop');
+                
+                // Random position and animation duration
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = 1 + Math.random() * 2;
+                const length = 10 + Math.random() * 20;
+                
+                drop.style.left = `${left}%`;
+                drop.style.animationDelay = `${delay}s`;
+                drop.style.animationDuration = `${duration}s`;
+                drop.style.height = `${length}px`;
+                
+                rainContainer.appendChild(drop);
+            }
+        }
+        
+        // Initialize rain effect
+        document.addEventListener('DOMContentLoaded', createRain);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <head>
+        <!-- الأكواد الموجودة -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            /* الأكواد الموجودة */
+            
+            /* إضافة دعم الخطوط العربية */
+            :lang(en) {
+                font-family: 'Poppins', sans-serif;
+            }
+            
+            :lang(ar) {
+                font-family: 'Cairo', sans-serif;
+            }
+            
+            [dir="rtl"] .mr-2 {
+                margin-right: 0;
+                margin-left: 0.5rem;
+            }
+            
+            [dir="rtl"] .mr-4 {
+                margin-right: 0;
+                margin-left: 1rem;
+            }
+        </style>
+    </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> My Profile </title>
@@ -115,6 +143,9 @@
                download="#">
                 <i class="fas fa-file-pdf mr-2"></i> Download CV
             </a>
+            <button id="langToggle" class="link-btn bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-2 rounded-full flex items-center">
+                <i class="fas fa-language mr-2"></i> <span id="langText">العربية</span>
+            </button>
         </div>
     </header>
         
@@ -240,6 +271,110 @@
                 });
             });
         });
+        // محتوى العربية والإنجليزية
+const translations = {
+    'en': {
+        'aboutTitle': 'About Me',
+        'aboutText1': 'I am a passionate tech enthusiast with a strong interest in web development, cybersecurity, and data analysis.',
+        'aboutText2': 'I enjoy exploring the latest technologies, building secure and efficient web applications, and extracting valuable insights from data to drive decision-making. My curiosity drives me to continuously learn and improve my skills in coding, network security, and data analytics.',
+        'skillsTitle': 'Skills',
+        'contactTitle': 'Get in touch for collaborations and inquiries',
+        'contactInfo': 'Contact Information',
+        'footer': '© 2025 Asim AL-aqeel. All rights reserved.',
+        'langButton': 'العربية',
+        'downloadCV': 'Download CV',
+        'jobTitle': 'Junior Web Developer'
+    },
+    'ar': {
+        'aboutTitle': 'نبذة عني',
+        'aboutText1': 'أنا شغوف بالتقنية مع اهتمام قوي بتطوير الويب والأمن السيبراني وتحليل البيانات.',
+        'aboutText2': 'أستمتع باستكشاف أحدث التقنيات وبناء تطبيقات ويب آمنة وفعالة واستخراج رؤى قيمة من البيانات لدعم اتخاذ القرار. فضولي يدفعني للتعلم المستمر وتحسين مهاراتي في البرمجة وأمن الشبكات وتحليل البيانات.',
+        'skillsTitle': 'المهارات',
+        'contactTitle': 'تواصل معي للتعاون والاستفسارات',
+        'contactInfo': 'معلومات الاتصال',
+        'footer': '© 2025 عاصم العقيل. جميع الحقوق محفوظة.',
+        'langButton': 'English',
+        'downloadCV': 'تحميل السيرة الذاتية',
+        'jobTitle': 'مطور ويب مبتدئ'
+    }
+};
+
+// إضافة دعم الاتجاه للغة العربية
+function setLanguageDirection(lang) {
+    document.documentElement.lang = lang;
+    document.body.style.direction = (lang === 'ar') ? 'rtl' : 'ltr';
+    
+    // تعديل فئات التباعد للتوافق مع الاتجاه
+    const flexItems = document.querySelectorAll('.flex.space-x-4');
+    flexItems.forEach(item => {
+        if (lang === 'ar') {
+            item.classList.remove('space-x-4');
+            item.classList.add('space-x-reverse', 'space-x-4');
+        } else {
+            item.classList.remove('space-x-reverse');
+        }
+    });
+    
+    // تعديل هوامش العناصر
+    const mrElements = document.querySelectorAll('[class*="mr-"]');
+    mrElements.forEach(el => {
+        const classes = el.className.split(' ');
+        classes.forEach(cls => {
+            if (cls.startsWith('mr-')) {
+                const value = cls.substring(3);
+                if (lang === 'ar') {
+                    el.classList.remove(cls);
+                    el.classList.add(`ml-${value}`);
+                } else {
+                    el.classList.remove(`ml-${value}`);
+                    el.classList.add(cls);
+                }
+            }
+        });
+    });
+}
+
+// تطبيق الترجمات على العناصر
+function applyTranslations(lang) {
+    document.getElementById('langText').textContent = translations[lang].langButton;
+    
+    // ترجمة العناوين الرئيسية
+    document.querySelector('section:nth-of-type(1) .section-title').textContent = translations[lang].aboutTitle;
+    document.querySelector('section:nth-of-type(3) .section-title').textContent = translations[lang].skillsTitle;
+    document.querySelector('section:nth-of-type(4) .section-title').textContent = translations[lang].contactTitle;
+    
+    // ترجمة نصوص قسم "نبذة عني"
+    const aboutParagraphs = document.querySelectorAll('section:nth-of-type(1) .card p');
+    aboutParagraphs[0].textContent = translations[lang].aboutText1;
+    aboutParagraphs[1].textContent = translations[lang].aboutText2;
+    
+    // ترجمة معلومات الاتصال
+    document.querySelector('.mb-4.md\\:mb-0 h3').textContent = translations[lang].contactInfo;
+    
+    // ترجمة نص تذييل الصفحة
+    document.querySelector('footer p').textContent = translations[lang].footer;
+    
+    // ترجمة زر السيرة الذاتية
+    document.querySelector('a[download="#"] i.fas.fa-file-pdf').nextSibling.textContent = " " + translations[lang].downloadCV;
+    
+    // ترجمة المسمى الوظيفي
+    document.querySelector('header .text-indigo-300').textContent = translations[lang].jobTitle;
+}
+
+// إضافة الحدث لزر تبديل اللغة
+document.addEventListener('DOMContentLoaded', function() {
+    let currentLang = 'en';
+    
+    document.getElementById('langToggle').addEventListener('click', function() {
+        currentLang = (currentLang === 'en') ? 'ar' : 'en';
+        applyTranslations(currentLang);
+        setLanguageDirection(currentLang);
+    });
+    
+    // تهيئة الترجمات
+    createRain();
+});
     </script>
+    
 </body>
 </html>

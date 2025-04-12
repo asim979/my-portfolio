@@ -144,7 +144,7 @@
                 <i class="fas fa-file-pdf mr-2"></i> Download CV
             </a>
             <button id="langToggle" class="link-btn bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-2 rounded-full flex items-center">
-                <i class="fas fa-language mr-2"></i> <span id="langText">العربية</span>
+                <i class="fas fa-language mr-2"></i> <span id="langText">  العربية</span>
             </button>
         </div>
     </header>
@@ -343,7 +343,7 @@ function applyTranslations(lang) {
     document.querySelector('section:nth-of-type(3) .section-title').textContent = translations[lang].skillsTitle;
     document.querySelector('section:nth-of-type(4) .section-title').textContent = translations[lang].contactTitle;
     
-    // ترجمة نصوص قسم "نبذة عني"
+    // ترجمة نصوص قسم نبذة عني"
     const aboutParagraphs = document.querySelectorAll('section:nth-of-type(1) .card p');
     aboutParagraphs[0].textContent = translations[lang].aboutText1;
     aboutParagraphs[1].textContent = translations[lang].aboutText2;
